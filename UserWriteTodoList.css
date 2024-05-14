@@ -57,8 +57,8 @@ p {
 }
 input {
   width: 15.5rem;
-  height: 2rem;
-  border: solid 2px #eee;
+  height: 1.8rem;
+  border: solid 1px #eee;
 }
 .login-img {
   height: 2.125rem;
@@ -69,10 +69,15 @@ input {
   text-align: center;
   color: white;
 }
+.header-img {
+  width: 5rem;
+  height: 5rem;
+}
 
 .input-wrap {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
 }
 .input-wrap2 {
   display: flex;
@@ -102,16 +107,12 @@ input {
   display: flex;
   flex-direction: column;
 }
-img {
-  width: 9rem;
-  height: 9rem;
-  z-index: 5;
-  position: relative;
-  left: 25%;
-}
-#header-img {
+.content-img {
   width: 5rem;
   height: 5rem;
+  z-index: 5;
+  position: fixed;
+  bottom: 40%;
 }
 
 footer {
@@ -130,28 +131,43 @@ footer {
 .menu {
 }
 
-#toDoList div{
+.toDoList{
   padding: 1%;
   display: flex;
   flex-direction: row;
   color: white;
   gap: 3%;
+  width: 70%;
 }
 
-#toDoList input{
-  width: 1rem;
-  height: 1rem;
+.toDoList input{
+  width: 2rem;
+  height: 2rem;
 }
-#toDoList span{
+.toDoList span{
   width:70%;
 }
-
-#toDoList button {
-  width: 2rem;
-  height: 1rem;
+.delete{
+  width: 2.5rem;
+  height: 1.5rem;
   background-color: #fff;
-  border: none;
-  border-radius: 4px;
+  border-radius: 4px;  
   cursor: pointer;
-  font-size: 0.5rem;
+text-align: center;
+
+}
+
+.delete>a{
+
+  text-decoration: none;
+  color: black;
+  border: none;
+
+  font-size: 0.8rem;
+
+}
+
+.addButton{
+  border: none;
+  background-color: white;
 }

@@ -65,10 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav>
         <?php
             echo "<a href=\"UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
-            echo "할일 작성하기";
+            echo "내가 할일";
             echo "</a>";
         ?>
-        <a href="">내가 할일</a>
+        <a href="">게시판</a>
         <a href="">공부 정리</a>
     </nav>
     <div class="content-wrap">...</div>
