@@ -1,7 +1,6 @@
 body {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .header-wrap {
   border-bottom: 1px solid #ccc;
@@ -21,8 +20,7 @@ nav {
   margin-bottom: 2%;
   background-color: white;
   font-size: 2rem;
-  padding-top: 3%;
-  padding-left: 3%;
+  padding: 3%;
 }
 
 .login-wrap {
@@ -34,7 +32,7 @@ nav {
   align-items: center;
   width: 23rem;
   height: 30rem;
-  padding: 1.875rem;
+  padding: 1rem;
   z-index: 1;
 }
 form {
@@ -120,11 +118,13 @@ img {
 
 footer {
   width: 100%;
-  height: 40%;
+  height: 15%;
   background-color: #4b5965;
   color: white;
   padding: 0.7%;
   font-size: 0.5rem;
+  position: absolute;
+  bottom: 0;
 }
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */

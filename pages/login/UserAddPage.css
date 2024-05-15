@@ -9,7 +9,7 @@ body {
   flex-direction: row;
   gap: 80%;
   width: 100vw;
-  height: 8vh;
+  height: 8%;
   background-color: #4b5965;
   color: white;
 }
@@ -21,8 +21,7 @@ nav {
   margin-bottom: 2%;
   background-color: white;
   font-size: 2rem;
-  padding-top: 3%;
-  padding-left: 3%;
+  padding: 3%;
 }
 
 .login-wrap {
@@ -33,7 +32,7 @@ nav {
   background-color: #cd1039;
   align-items: center;
   width: 30rem;
-  height: 35rem;
+  height: 37rem;
   padding: 1rem;
   z-index: 1;
 }
@@ -59,7 +58,7 @@ p {
   text-align: center;
   font-size: 1.5rem;
   border-bottom: solid 1px #eee;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: white;
 }
 input {
@@ -123,11 +122,13 @@ img {
 
 footer {
   width: 100%;
-  height: 40%;
+  height: 15%;
   background-color: #4b5965;
   color: white;
   padding: 0.7%;
   font-size: 0.5rem;
+  position: absolute;
+  bottom: 0;
 }
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */

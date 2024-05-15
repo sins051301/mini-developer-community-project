@@ -1,7 +1,6 @@
 body {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .header-wrap {
   border-bottom: 1px solid #ccc;
@@ -19,6 +18,9 @@ nav {
   display: flex;
   flex-direction: row;
   gap: 8%;
+  margin-bottom: 2%;
+  width: 30rem;
+  justify-content: center;
 }
 .login-wrap {
   margin-top: 2%;
@@ -29,12 +31,12 @@ nav {
   background-color: #cd1039;
   align-items: center;
   width: 23rem;
-  height: 30rem;
+  height: 33rem;
   padding: 1.875rem;
   z-index: 1;
 }
 form {
-  gap: 1rem;
+  margin-bottom: 1rem;
 }
 p {
   margin-bottom: 1rem;
@@ -43,7 +45,9 @@ p {
   width: 100%;
   height: 64vh;
   display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
+  flex-direction: column;
+  padding: 1%;
+  align-items: center;
 }
 
 .login-head {
@@ -77,7 +81,6 @@ input {
 .input-wrap {
   display: flex;
   flex-direction: column;
-
 }
 .input-wrap2 {
   display: flex;
@@ -90,13 +93,13 @@ input {
   color: white;
 }
 
-#submit {
+/* #submit {
   width: 4rem;
   height: 2rem;
   background-color: #4b5965;
   color: white;
   border: none;
-}
+} */
 #visible {
   width: 1rem;
   height: 1rem;
@@ -117,11 +120,13 @@ input {
 
 footer {
   width: 100%;
-  height: 40%;
+  height: 15%;
   background-color: #4b5965;
   color: white;
   padding: 0.7%;
   font-size: 0.5rem;
+  position: absolute;
+  bottom: 0;
 }
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */
@@ -131,7 +136,7 @@ footer {
 .menu {
 }
 
-.toDoList{
+.toDoList {
   padding: 1%;
   display: flex;
   flex-direction: row;
@@ -140,34 +145,43 @@ footer {
   width: 70%;
 }
 
-.toDoList input{
+.toDoList input {
   width: 2rem;
   height: 2rem;
 }
-.toDoList span{
-  width:70%;
+.toDoList span {
+  width: 70%;
 }
-.delete{
+.delete {
   width: 2.5rem;
   height: 1.5rem;
   background-color: #fff;
-  border-radius: 4px;  
+  border-radius: 4px;
   cursor: pointer;
-text-align: center;
-
+  text-align: center;
 }
 
-.delete>a{
-
+.delete > a {
   text-decoration: none;
   color: black;
   border: none;
 
   font-size: 0.8rem;
-
 }
 
-.addButton{
+.addButton {
   border: none;
-  background-color: white;
+  color: white;
+  background-color: #4b5965;
+}
+
+.addboardButton {
+  border: none;
+  color: white;
+  background-color: #4b5965;
+  position: relative;
+  z-index: 10;
+  bottom: 0;
+  width: 7rem;
+  height: 2rem;
 }

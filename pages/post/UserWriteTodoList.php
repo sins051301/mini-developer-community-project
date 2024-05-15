@@ -15,6 +15,29 @@ if(isset($_POST['submit'])){
     header("Location:UserWriteTodoList.php");
     exit;
 }
+if(isset($_POST['submit_form'])){
+    $id = $_SESSION['Login_id'];
+    $category = "To-do";
+    $thumb = 0;
+    $view = 0;
+    $chat =0;
+    $time = date("Y-m-d H:i:s");
+    
+    // 아이디와 카테고리 중복 체크
+    $check_query = "SELECT SID FROM userboardtable WHERE Login_board_id = '$id' AND Board_category = '$category'";
+    $result = mysqli_query($db, $check_query);
+    if(mysqli_num_rows($result) > 0){
+        // 이미 해당 아이디와 카테고리로 등록된 레코드가 존재함
+        // 처리할 내용을 여기에 추가하거나 에러 메시지를 표시할 수 있음
+    } else {
+        // 중복되는 아이디와 카테고리가 없으므로 새로운 레코드 삽입
+        $query = "INSERT INTO userboardtable (Login_board_id, Board_category, Create_board_date, Board_chat, Board_thumb, Board_view) VALUES ('$id','$category', '$time', '$chat', '$thumb', '$view')";
+        mysqli_query($db, $query) or die(mysqli_error($db));
+        header("Location:UserWriteTodoList.php");
+        exit;
+    }
+}
+
 
 ?>
 
@@ -25,35 +48,41 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
-    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="../../reset.css" />
     <link rel="stylesheet" href="UserWriteTodoList.css" />
-    <script type="text/javascript" src="TodoAdd.js"></script>
 </head>
 
 <body>
     <header>
         <div class="header-wrap">
             <div class="main-log">
-                <img class="header-img" src="./img/sejonglogo.png" alt="LogoImg">
+                <img class="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
             </div>
             <div>
                 <?php
                 // 세션에 저장된 데이터 확인
                 if(isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
+                    echo"|";
+                    echo "<a href='../../utils/LogOut.php'>Logout</a>";
                 } else {
-                    echo "세션에 로그인 정보가 없습니다.";
+                    echo "<div class='menu'>";
+                    echo "<a href='../login/UserAddPage.php'>회원가입</a>";
+                    echo"|";
+                    echo "<a href='../login/LoginPage.php'>로그인</a>";
+                    echo "</div>";
                 }
                 ?>
             </div>
         </div>
     </header>
-    <nav>
-        <a href="">글쓰기</a>
-        <a href="">내가 할일</a>
-        <a href="">공부 정리</a>
-    </nav>
     <div class="content-wrap">
+        <nav>
+            <a href="">글쓰기</a>
+            <a href="">내가 할일</a>
+            <a href="">공부 정리</a>
+        </nav>
+
         <div class="login-wrap">
             <div class="login-head">
                 Todo-List
@@ -75,12 +104,15 @@ if(isset($_POST['submit'])){
                 echo "<input type='checkbox' name='completed[]'>";
                 echo "<span>{$row['User_task']}</span>";
                 echo "<div class='delete'>";
-                echo "<a href='DeleteTask.php?num={$row['User_task']}'>삭제</a>";
+                echo "<a href='../utils/DeleteTask.php?num={$row['User_task']}'>삭제</a>";
                 echo "</div>";
                 echo "</div>";
             }
             ?>
-            <img class="content-img" src="./img/sejongwhite.png" alt="LogoImg">
+            <form method="post" action="">
+                <button type="submit" class="addboardButton" name="submit_form">게시판 추가</button>
+            </form>
+            <img class="content-img" src="../../img/sejongwhite.png" alt="LogoImg">
         </div>
     </div>
     <footer>
