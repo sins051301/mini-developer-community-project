@@ -2,10 +2,7 @@
 // 데이터베이스 연결
 //session_unset();
 session_start(); 
-// if (!isset($_SESSION['Login_id'])) {
-//     header("Location: LoginPage.php");
-//     exit;
-// }
+
 $servername = 'localhost';
 $db_username = 'root';
 $db_password = '';
@@ -60,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // 세션에 저장된 데이터 확인
                 if(isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
-                    echo"|";
-                    echo "<a href='../utils/LogOut.php'>Logout</a>";
+                    echo"| ";
+                    echo "<a class='loginlink' href='../utils/LogOut.php'>Logout</a>";
                 } else {
                     echo "<div class='menu'>";
                     echo "<a href='./login/UserAddPage.php'>회원가입</a>";
@@ -73,21 +70,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </header>
-    <nav>
-        <?php
+    <div class="content-wrap">
+        <nav>
+            <?php
+            echo "<a href=\"MainPage.php?id={$_SESSION['Login_id']}\">";
+            echo "홈";
+            echo "</a>";
+        ?>
+            <?php
             echo "<a href=\"./post/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
             echo "내가 할일";
             echo "</a>";
         ?>
-        <a href="">공부 정리</a>
-        <?php
+            <a href="">공부 정리</a>
+            <?php
             echo "<a href=\"./board/TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
             echo "게시판";
             echo "</a>";
         ?>
 
-    </nav>
-    <div class="content-wrap">...</div>
+        </nav>
+        <div class=""> <img id="" src="../img/sejonglogo.png" alt="LogoImg"></div>
+        <div class="main-logo">
+            Developer Community Site
+        </div>
+    </div>
     <footer>
         <p>사업자 등록 번호: 1004</p>
         <p>

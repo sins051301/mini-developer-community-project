@@ -24,8 +24,8 @@ session_start();
                 // 세션에 저장된 데이터 확인
                 if(isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
-                    echo"|";
-                    echo "<a href='../utils/LogOut.php'>Logout</a>";
+                    echo"| ";
+                    echo "<a class='loginlink' href='../../utils/LogOut.php'>Logout</a>";
                 } else {
                     echo "<div class='menu'>";
                     echo "<a href='../../pages/UserAddPage.php'>회원가입</a>";
@@ -40,12 +40,21 @@ session_start();
     <div class="content-wrap">
         <nav>
             <?php
-            echo "<a href=\"../../pages/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
+            echo "<a href=\"../MainPage.php?id={$_SESSION['Login_id']}\">";
+            echo "홈";
+            echo "</a>";
+        ?>
+            <?php
+            echo "<a href=\"../post/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
             echo "내가 할일";
             echo "</a>";
         ?>
-            <a href="">게시판</a>
             <a href="">공부 정리</a>
+            <?php
+            echo "<a href=\"TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
+            echo "게시판";
+            echo "</a>";
+        ?>
         </nav>
         <table class="list-table">
             <thead>
@@ -63,10 +72,11 @@ session_start();
         // 데이터베이스에서 가져온 각각의 레코드에 대해 반복하여 출력
         $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to connect. Check your connection parameters.');
         $sql = mysqli_query($db, "SELECT * FROM userboardtable ORDER BY SID DESC LIMIT 0,10");
+        $num =1;
         while ($board = mysqli_fetch_assoc($sql)) {
             ?>
                 <tr>
-                    <td width="70"><?php echo $board['SID']; ?></td>
+                    <td width="70"><?php echo $num ?></td>
                     <td width="110">
                         <?php echo "<a href='TodoView.php?Login_id={$_SESSION['Login_id']}&Login_board_id={$board['Login_board_id']}'/>"?><?php echo $board['Board_category']; ?>
                     </td>
@@ -76,6 +86,7 @@ session_start();
                     <td width="100"><?php echo $board['Board_view']; ?></td>
                 </tr>
                 <?php
+                $num++;
         }
         ?>
             </tbody>
