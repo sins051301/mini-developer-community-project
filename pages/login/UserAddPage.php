@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
-    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="../../reset.css" />
     <link rel="stylesheet" href="UserAddPage.css" />
 
 </head>
@@ -14,7 +14,7 @@
     <header>
         <div class="header-wrap">
             <div class="main-log">
-                <img id="header-img" src="./img/sejonglogo.png" alt="LogoImg">
+                <img id="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
             </div>
             <div class="menu">
                 <a href="UserAddPage.php">회원가입</a>
@@ -61,7 +61,7 @@
                 <input id="submit" type="submit" name="submit" value="회원가입">
 
             </form>
-            <img src="./img/sejongwhite.png" alt="LogoImg">
+            <img src="../../img/sejongwhite.png" alt="LogoImg">
         </div>
     </div>
     <footer>

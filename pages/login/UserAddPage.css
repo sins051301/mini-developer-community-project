@@ -8,39 +8,45 @@ body {
   display: flex;
   flex-direction: row;
   gap: 80%;
-  width: 100%;
+  width: 100vw;
   height: 8%;
   background-color: #4b5965;
   color: white;
 }
 
 nav {
-  margin-top: 4%;
-  display: flex;
-  flex-direction: row;
-  gap: 8%;
+  width: 100%;
+  height: 5%;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2%;
+  background-color: white;
+  font-size: 2rem;
+  padding: 3%;
 }
+
 .login-wrap {
-  margin-top: 2%;
   border: solid 1px #eee;
   box-shadow: 0 0 3px #eee;
   display: flex;
   flex-direction: column;
   background-color: #cd1039;
   align-items: center;
-  width: 23rem;
-  height: 30rem;
-  padding: 1.875rem;
+  width: 30rem;
+  height: 37rem;
+  padding: 1rem;
   z-index: 1;
 }
 form {
-  gap: 1rem;
+  gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 p {
   margin-bottom: 1rem;
 }
 .content-wrap {
-  width: 100%;
+  width: 100vw;
   height: 64vh;
   display: flex;
   justify-content: center; /* 수평 가운데 정렬 */
@@ -52,37 +58,36 @@ p {
   text-align: center;
   font-size: 1.5rem;
   border-bottom: solid 1px #eee;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: white;
 }
 input {
-  width: 15.5rem;
+  width: 25rem;
   height: 2rem;
   border: solid 2px #eee;
 }
 .login-img {
   height: 2.125rem;
   width: 2.125em;
-  border-top: solid 1px #eee;
-  border-bottom: solid 1px #eee;
-  border-left: solid 1px #eee;
-  text-align: center;
-  color: white;
+  border-top: solid 2px #eee;
+  border-bottom: solid 2px #eee;
+  border-left: solid 2px #eee;
 }
 
 .input-wrap {
+  gap: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  color: white;
+  font-size: 0.8rem;
 }
 .input-wrap2 {
   display: flex;
   flex-direction: row;
-  gap: 6rem;
-  height: 5rem;
-  width: 20rem;
-  margin-bottom: 2rem;
-  border-bottom: solid 1px #eee;
+  gap: 1rem;
   color: white;
+  justify-content: center;
+  font-size: 0.8rem;
 }
 
 #submit {
@@ -91,6 +96,7 @@ input {
   background-color: #4b5965;
   color: white;
   border: none;
+  text-align: center;
 }
 #visible {
   width: 1rem;
@@ -103,11 +109,11 @@ input {
   flex-direction: column;
 }
 img {
-  width: 9rem;
-  height: 9rem;
+  width: 5rem;
+  height: 5rem;
   z-index: 5;
   position: relative;
-  left: 25%;
+  left: 5;
 }
 #header-img {
   width: 5rem;
@@ -116,11 +122,13 @@ img {
 
 footer {
   width: 100%;
-  height: 40%;
+  height: 15%;
   background-color: #4b5965;
   color: white;
   padding: 0.7%;
   font-size: 0.5rem;
+  position: absolute;
+  bottom: 0;
 }
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */
@@ -129,29 +137,14 @@ footer {
 }
 .menu {
 }
-
-#toDoList div{
-  padding: 1%;
+.pass {
+  width: 11.8rem;
+  height: 2rem;
+  border: solid 2px #eee;
+}
+.pass-wrap {
+  gap: 1rem;
   display: flex;
-  flex-direction: row;
-  color: white;
-  gap: 3%;
-}
-
-#toDoList input{
-  width: 1rem;
-  height: 1rem;
-}
-#toDoList span{
-  width:70%;
-}
-
-#toDoList button {
-  width: 2rem;
-  height: 1rem;
-  background-color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.5rem;
+  flex-direction: column;
+  font-size: 0.8rem;
 }
