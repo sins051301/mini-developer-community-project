@@ -10,7 +10,7 @@ $task_to_delete = $_GET['num'];
 // 해당 User_task 값을 가진 레코드를 데이터베이스에서 삭제합니다.
 $query = "DELETE FROM todotable WHERE User_task='$task_to_delete' AND Login_todo_id='{$_SESSION['Login_id']}'";
 mysqli_query($db, $query) or die(mysqli_error($db));
-header("Location:../pages/UserWriteTodoList.php");
+header("Location:../pages/post/UserWriteTodoList.php");
 exit;
 
 ?>

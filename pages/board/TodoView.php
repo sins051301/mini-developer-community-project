@@ -25,12 +25,12 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
                 // 세션에 저장된 데이터 확인
                 if(isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
-                    echo"|";
-                    echo "<a href='../../utils/LogOut.php'>Logout</a>";
+                    echo"| ";
+                    echo "<a class='loginlink' href='../../utils/LogOut.php'>Logout</a>";
                 } else {
                     echo "<div class='menu'>";
                     echo "<a href='../login/UserAddPage.php'>회원가입</a>";
-                    echo"|";
+                    echo"| ";
                     echo "<a href='../login/LoginPage.php'>로그인</a>";
                     echo "</div>";
                 }
@@ -40,9 +40,22 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
     </header>
     <div class="content-wrap">
         <nav>
-            <a href="">글쓰기</a>
-            <a href="">내가 할일</a>
+            <?php
+            echo "<a href=\"../MainPage.php?id={$_SESSION['Login_id']}\">";
+            echo "홈";
+            echo "</a>";
+        ?>
+            <?php
+            echo "<a href=\"../post/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
+            echo "내가 할일";
+            echo "</a>";
+        ?>
             <a href="">공부 정리</a>
+            <?php
+            echo "<a href=\"../board/TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
+            echo "게시판";
+            echo "</a>";
+        ?>
         </nav>
 
         <div class="login-wrap">
@@ -56,7 +69,7 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
             // 투두리스트 항목 출력
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='toDoList'>";
-                echo "<input type='checkbox' name='completed[]'>";
+                echo "<span>{$row['User_category']}</span>";
                 echo "<span>{$row['User_task']}</span>";
                 echo "</div>";
             }

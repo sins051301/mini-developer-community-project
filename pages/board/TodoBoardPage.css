@@ -46,14 +46,11 @@ footer {
   align-items: center;
 }
 
-.menu > a {
+.loginlink {
   color: white; /* 링크 색상을 흰색으로 설정 */
   text-decoration: none; /* 링크 밑줄 제거 */
-  font-size: 0.8rem;
 }
 
-.menu {
-}
 p {
   margin-bottom: 1rem;
 }
