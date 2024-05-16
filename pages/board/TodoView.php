@@ -1,6 +1,19 @@
 <?php
+
 session_start(); 
 $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to connect. Check your connection parameters.');
+
+if(isset($_POST['submit'])){
+    $category = 'To-do';
+    $pageid = $_GET['Login_board_id'];
+    $id = $_SESSION['Login_id'];
+    $chat = $_POST['comment'];
+    $time = date("Y-m-d H:i:s");
+    $query = "INSERT INTO userchattable (User_page_id, Login_chat_id, Login_chat_category, Chat_message, Chat_date) VALUES ( '$pageid', '$id','$category', '$chat', '$time')";
+    mysqli_query($db, $query) or die(mysqli_error($db));
+    header("Location: TodoView.php?Login_board_id={$_GET['Login_board_id']}");
+    exit;
+}
 ?>
 
 <!doctype html>
@@ -12,6 +25,7 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
     <title>Developer-community-view-page</title>
     <link rel="stylesheet" href="../../reset.css" />
     <link rel="stylesheet" href="TodoView.css" />
+    <script type="text/javascript" src="ToggleForm.js"></script>
 </head>
 
 <body>
@@ -62,6 +76,11 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
             <div class="login-head">
                 Todo-List
             </div>
+            <div class="toDOTitle">
+                <div>카테고리</div>
+                <div>할 일</div>
+                <div>날짜</div>
+            </div>
             <?php
             // 데이터베이스에서 해당 사용자의 투두리스트 불러오기
             $query = "SELECT * FROM todotable WHERE Login_todo_id='{$_GET['Login_board_id']}'";
@@ -69,15 +88,45 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to conn
             // 투두리스트 항목 출력
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='toDoList'>";
-                echo "<span>{$row['User_category']}</span>";
-                echo "<span>{$row['User_task']}</span>";
+                echo "<div>{$row['User_category']}</div>";
+                echo "<div>{$row['User_task']}</div>";
+                echo "<div>{$row['Create_date']}</div>";
                 echo "</div>";
             }
             ?>
 
-            <img class="content-img" src="../../img/sejongwhite.png" alt="LogoImg">
+
+            <img class=" content-img" src="../../img/sejongwhite.png" alt="LogoImg">
+        </div>
+        <div>
+            <?php
+          $User_page_id = $_GET['Login_board_id']; // 예시 아이디
+          $login_chat_category = 'To-do'; // 예시 카테고리
+          
+          $query = "SELECT * FROM userchattable WHERE User_page_id='$User_page_id' AND Login_chat_category='$login_chat_category'";
+          $result = mysqli_query($db, $query);
+            while ($row = mysqli_fetch_assoc($result)) {
+              
+                echo "<div class='chat-title'><div>{$row['Login_chat_id']}</div>";
+                echo "<div>{$row['Chat_date']}</div></div>";
+                echo "<div class='chat-wrap'>";
+                echo "<div>{$row['Chat_message']}</div>";
+                echo "</div>";
+            }
+            ?>
+        </div>
+        <div class="form-wrap">
+            <button class="comment-button" onclick="toggleForm()">댓글 쓰기</button>
+
+            <div class="comment-form">
+                <form id="commentForm" method="post" action="">
+                    <textarea name="comment" placeholder="댓글을 입력하세요"></textarea>
+                    <button class="addBtn" name="submit" type="submit">등록</button>
+                </form>
+            </div>
         </div>
     </div>
+
     <footer>
         <p>사업자 등록 번호: 1004</p>
         <p>대표자명: 신혁수</p>
