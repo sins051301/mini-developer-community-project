@@ -1,17 +1,31 @@
 <?php
-
-session_start(); 
+session_start();
 $db = mysqli_connect('localhost', 'root', '', 'userdata') or die('Unable to connect. Check your connection parameters.');
 
-if(isset($_POST['submit'])){
+$pageid = $_GET['Login_board_id'];
+
+// 조회수 증가
+    $update_query = "UPDATE userboardtable SET Board_view = Board_view + 1 WHERE Login_board_id='$pageid'";
+    mysqli_query($db, $update_query) or die(mysqli_error($db));
+    $_SESSION["viewed_$pageid"] = true;
+
+
+// 좋아요 증가
+if (isset($_POST['submitlike']) && !isset($_SESSION["liked_$pageid"])) {
+    $update_query = "UPDATE userboardtable SET Board_thumb = Board_thumb + 1 WHERE Login_board_id='$pageid'";
+    mysqli_query($db, $update_query) or die(mysqli_error($db));
+    $_SESSION["liked_$pageid"] = true;
+}
+
+// 댓글 추가
+if (isset($_POST['submit'])) {
     $category = 'To-do';
-    $pageid = $_GET['Login_board_id'];
     $id = $_SESSION['Login_id'];
     $chat = $_POST['comment'];
     $time = date("Y-m-d H:i:s");
-    $query = "INSERT INTO userchattable (User_page_id, Login_chat_id, Login_chat_category, Chat_message, Chat_date) VALUES ( '$pageid', '$id','$category', '$chat', '$time')";
+    $query = "INSERT INTO userchattable (User_page_id, Login_chat_id, Login_chat_category, Chat_message, Chat_date) VALUES ('$pageid', '$id', '$category', '$chat', '$time')";
     mysqli_query($db, $query) or die(mysqli_error($db));
-    header("Location: TodoView.php?Login_board_id={$_GET['Login_board_id']}");
+    header("Location: TodoView.php?Login_board_id=$pageid");
     exit;
 }
 ?>
@@ -36,15 +50,14 @@ if(isset($_POST['submit'])){
             </div>
             <div>
                 <?php
-                // 세션에 저장된 데이터 확인
-                if(isset($_SESSION['Login_id'])) {
+                if (isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
-                    echo"| ";
+                    echo "| ";
                     echo "<a class='loginlink' href='../../utils/LogOut.php'>Logout</a>";
                 } else {
                     echo "<div class='menu'>";
                     echo "<a href='../login/UserAddPage.php'>회원가입</a>";
-                    echo"| ";
+                    echo "| ";
                     echo "<a href='../login/LoginPage.php'>로그인</a>";
                     echo "</div>";
                 }
@@ -58,18 +71,16 @@ if(isset($_POST['submit'])){
             echo "<a href=\"../MainPage.php?id={$_SESSION['Login_id']}\">";
             echo "홈";
             echo "</a>";
-        ?>
-            <?php
             echo "<a href=\"../post/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
             echo "내가 할일";
             echo "</a>";
-        ?>
+            ?>
             <a href="">공부 정리</a>
             <?php
             echo "<a href=\"../board/TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
             echo "게시판";
             echo "</a>";
-        ?>
+            ?>
         </nav>
 
         <div class="login-wrap">
@@ -83,9 +94,8 @@ if(isset($_POST['submit'])){
             </div>
             <?php
             // 데이터베이스에서 해당 사용자의 투두리스트 불러오기
-            $query = "SELECT * FROM todotable WHERE Login_todo_id='{$_GET['Login_board_id']}'";
+            $query = "SELECT * FROM todotable WHERE Login_todo_id='$pageid'";
             $result = mysqli_query($db, $query);
-            // 투두리스트 항목 출력
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='toDoList'>";
                 echo "<div>{$row['User_category']}</div>";
@@ -95,18 +105,25 @@ if(isset($_POST['submit'])){
             }
             ?>
 
+            <?php
+            // 좋아요 수 가져오기
+            $query = "SELECT Board_thumb FROM userboardtable WHERE Login_board_id='$pageid'";
+            $result = mysqli_query($db, $query);
+            $row = mysqli_fetch_assoc($result);
+            echo "<div class='like-wrap'>";
+            echo "<form method='post' action=''>";
+            echo "<input type='submit' name='submitlike' value='좋아요' " . (isset($_SESSION["liked_$pageid"]) ? "disabled" : "") . "> ";
+            echo "</form>";
+            echo "</div>";
+            ?>
 
-            <img class=" content-img" src="../../img/sejongwhite.png" alt="LogoImg">
+            <img class="content-img" src="../../img/sejongwhite.png" alt="LogoImg">
         </div>
         <div>
             <?php
-          $User_page_id = $_GET['Login_board_id']; // 예시 아이디
-          $login_chat_category = 'To-do'; // 예시 카테고리
-          
-          $query = "SELECT * FROM userchattable WHERE User_page_id='$User_page_id' AND Login_chat_category='$login_chat_category'";
-          $result = mysqli_query($db, $query);
+            $query = "SELECT * FROM userchattable WHERE User_page_id='$pageid' AND Login_chat_category='To-do'";
+            $result = mysqli_query($db, $query);
             while ($row = mysqli_fetch_assoc($result)) {
-              
                 echo "<div class='chat-title'><div>{$row['Login_chat_id']}</div>";
                 echo "<div>{$row['Chat_date']}</div></div>";
                 echo "<div class='chat-wrap'>";
