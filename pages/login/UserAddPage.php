@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="UserAddPage.css" />
+    <link rel="stylesheet" href="UserAddPage.css?after" />
 
 </head>
 

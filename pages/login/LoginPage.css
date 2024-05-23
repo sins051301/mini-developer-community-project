@@ -2,6 +2,16 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+header {
+  background-color: #4b5965;
+  color: white;
+  padding: 10px 20px;
+}
+
+#header-img {
+  width: 5rem;
+  height: 5rem;
+}
 .header-wrap {
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -14,13 +24,26 @@ body {
 }
 
 nav {
-  width: 100%;
-  height: 5%;
-  border-bottom: 1px solid #ccc;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  gap: 8%;
   margin-bottom: 2%;
-  background-color: white;
-  font-size: 2rem;
-  padding: 3%;
+  width: 30rem;
+  justify-content: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #4b5965;
+  background-color: #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background-color: #4b5965;
+  color: white;
 }
 
 .login-wrap {
@@ -34,6 +57,7 @@ nav {
   height: auto;
   padding: 1rem;
   z-index: 1;
+  margin-bottom: 5%;
 }
 form {
   gap: 1rem;
@@ -45,7 +69,7 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center;
 }
 
 .login-head {
@@ -118,11 +142,12 @@ img {
 
 footer {
   width: 100%;
-  height: 30%;
+  height: 30rem;
   background-color: #4b5965;
   color: white;
-  padding: 0.7%;
-  font-size: 0.5rem;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  text-align: center;
 }
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */

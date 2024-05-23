@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="LoginPage.css" />
+    <link rel="stylesheet" href="LoginPage.css?after" />
     <script type="text/javascript" src="VisiblePassword.js"></script>
 </head>
 
@@ -59,7 +59,9 @@
                 </div>
             </form>
         </div>
+
     </div>
+
     <footer>
         <p>사업자 등록 번호: 1004</p>
         <p>
@@ -75,7 +77,6 @@
             이메일: sins051301@naver.com
         </p>
     </footer>
-
 
 </body>
 

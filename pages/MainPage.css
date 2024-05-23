@@ -1,8 +1,6 @@
 body {
   width: 100vw;
   overflow-x: hidden;
-  margin: 0;
-  font-family: Arial, sans-serif;
 }
 
 header {
@@ -21,11 +19,14 @@ p {
 }
 
 .header-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  gap: 80%;
   width: 100%;
+  height: 8%;
+  background-color: #4b5965;
+  color: white;
 }
 
 .loginlink {
@@ -34,10 +35,12 @@ p {
 }
 
 nav {
-  margin: 20px 0;
+  margin-top: 4%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: row;
+  gap: 8%;
+  margin-bottom: 2%;
+  width: 30rem;
   justify-content: center;
 }
 
@@ -56,6 +59,7 @@ nav a:hover {
 
 footer {
   width: 100%;
+  height: 30rem;
   background-color: #4b5965;
   color: white;
   padding: 10px 20px;
@@ -66,15 +70,15 @@ footer {
 .content-wrap {
   width: 100%;
   display: flex;
-  height: auto;
-  flex-direction: column;
   align-items: center;
-  padding: 20px;
+  flex-direction: column;
+  padding: 1%;
+  margin-bottom: 5%;
 }
 
 #main-logo-img {
-  width: 100px;
-  height: 100px;
+  width: 30rem;
+  height: 30rem;
   margin: 20px 0;
 }
 

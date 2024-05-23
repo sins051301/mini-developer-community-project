@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-view-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="TodoView.css" />
+    <link rel="stylesheet" href="TodoView.css?after" />
     <script type="text/javascript" src="ToggleForm.js"></script>
 </head>
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     <header>
         <div class="header-wrap">
             <div class="main-log">
-                <img class="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
+                <img id="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
             </div>
             <div>
                 <?php

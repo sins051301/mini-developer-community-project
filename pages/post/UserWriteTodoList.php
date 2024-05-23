@@ -46,14 +46,14 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-write-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="UserWriteTodoList.css" />
+    <link rel="stylesheet" href="UserWriteTodoList.css?after" />
 </head>
 
 <body>
     <header>
         <div class="header-wrap">
             <div class="main-log">
-                <img class="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
+                <img id="header-img" src="../../img/sejonglogo.png" alt="LogoImg">
             </div>
             <div>
                 <?php
