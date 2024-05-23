@@ -12,6 +12,7 @@ $query = 'CREATE TABLE userchattable (
     SID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     User_page_id VARCHAR(255) NOT NULL,
     Login_chat_id VARCHAR(255) NOT NULL,
+    User_id INTEGER UNSIGNED NOT NULL, 
     Login_chat_category VARCHAR(255) NOT NULL,
     Chat_message VARCHAR(255) NOT NULL, 
     Chat_date DATETIME NOT NULL DEFAULT NOW(),

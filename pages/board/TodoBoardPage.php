@@ -49,7 +49,11 @@ session_start();
             echo "내가 할일";
             echo "</a>";
         ?>
-            <a href="">공부 정리</a>
+            <?php
+            echo "<a href=\"../post/UserWriteTostudyList.php?id={$_SESSION['Login_id']}\">";
+            echo "공부 정리";
+            echo "</a>";
+        ?>
             <?php
             echo "<a href=\"TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
             echo "게시판";
@@ -78,7 +82,13 @@ session_start();
                 <tr>
                     <td width="70"><?php echo $num ?></td>
                     <td width="110">
-                        <?php echo "<a href='TodoView.php?Login_id={$_SESSION['Login_id']}&Login_board_id={$board['Login_board_id']}'/>"?><?php echo $board['Board_category']; ?>
+                        <?php
+                            $link = "TodoView.php?Login_id={$_SESSION['Login_id']}&Login_board_id={$board['Login_board_id']}";
+                            if ($board['Board_category'] == 'Study-summary') {
+                            $link = "StudyViewPage.php?Login_id={$_SESSION['Login_id']}&Login_board_id={$board['Login_board_id']}&User_id={$board['User_id']}";
+                            }
+                            ?>
+                        <a href="<?php echo $link; ?>"><?php echo htmlspecialchars($board['Board_category']); ?></a>
                     </td>
                     <td width="120"><?php echo $board['Login_board_id']; ?></td>
                     <td width="500"><?php echo $board['Create_board_date']; ?></td>

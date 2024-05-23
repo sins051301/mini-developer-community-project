@@ -1,15 +1,13 @@
 <?php
 // 데이터베이스 연결
-//session_unset();
-session_start(); 
+session_start();
 
 $servername = 'localhost';
 $db_username = 'root';
 $db_password = '';
 $db_name = 'userdata';
 
-$db = new mysqli($servername, $db_username, $db_password,$db_name) or die ('Unable to connect. Check your connection parameters.');
-
+$db = new mysqli($servername, $db_username, $db_password, $db_name) or die('Unable to connect. Check your connection parameters.');
 
 // 로그인 정보 가져오기
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,15 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 결과 확인
     if (mysqli_num_rows($result) == 1) {
         // 로그인 성공
-        session_start();
         $_SESSION['Login_id'] = $login_id;
         // 로그인 성공 후 리다이렉트할 페이지로 이동
         header("Location: MainPage.php");
         exit;
     } else {
-      header("Location: LoginPage.php");
-      exit;
-        
+        header("Location: LoginPage.php");
+        exit;
     }
 }
 ?>
@@ -55,14 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>
                 <?php
                 // 세션에 저장된 데이터 확인
-                if(isset($_SESSION['Login_id'])) {
+                if (isset($_SESSION['Login_id'])) {
                     echo $_SESSION['Login_id'];
-                    echo"| ";
+                    echo "| ";
                     echo "<a class='loginlink' href='../utils/LogOut.php'>Logout</a>";
                 } else {
                     echo "<div class='menu'>";
                     echo "<a href='./login/UserAddPage.php'>회원가입</a>";
-                    echo"|";
+                    echo "|";
                     echo "<a href='./login/LoginPage.php'>로그인</a>";
                     echo "</div>";
                 }
@@ -76,21 +72,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<a href=\"MainPage.php?id={$_SESSION['Login_id']}\">";
             echo "홈";
             echo "</a>";
-        ?>
+            ?>
             <?php
             echo "<a href=\"./post/UserWriteTodoList.php?id={$_SESSION['Login_id']}\">";
             echo "내가 할일";
             echo "</a>";
-        ?>
-            <a href="">공부 정리</a>
+            ?>
+            <?php
+            echo "<a href=\"./post/UserWriteTostudyList.php?id={$_SESSION['Login_id']}\">";
+            echo "공부 정리";
+            echo "</a>";
+            ?>
             <?php
             echo "<a href=\"./board/TodoBoardPage.php?id={$_SESSION['Login_id']}\">";
             echo "게시판";
             echo "</a>";
-        ?>
-
+            ?>
         </nav>
-        <div class=""> <img id="" src="../img/sejonglogo.png" alt="LogoImg"></div>
+        <img id="main-logo-img" src="../img/sejonglogo.png" alt="LogoImg">
         <div class="main-logo">
             Developer Community Site
         </div>
