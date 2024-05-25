@@ -8,20 +8,19 @@ mysqli_query($db, $query) or die(mysqli_error($db));
 
 mysqli_select_db($db, 'userdata') or die(mysqli_error($db));
 
-$query = 'CREATE TABLE userboardtable (
+$query = 'CREATE TABLE userchattable (
     SID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    Login_board_id VARCHAR(255) NOT NULL, 
+    User_page_id VARCHAR(255) NOT NULL,
+    Login_chat_id VARCHAR(255) NOT NULL,
     User_id INTEGER UNSIGNED NOT NULL, 
-    Board_category VARCHAR(255) NOT NULL, 
-    Create_board_date DATETIME NOT NULL,
-    Board_chat INTEGER UNSIGNED DEFAULT 0,
-    Board_thumb INTEGER UNSIGNED DEFAULT 0,
-    Board_view INTEGER UNSIGNED DEFAULT 0,
+    Login_chat_category VARCHAR(255) NOT NULL,
+    Chat_message VARCHAR(255) NOT NULL, 
+    Chat_date DATETIME NOT NULL DEFAULT NOW(),
     PRIMARY KEY (SID)
 ) 
 ENGINE=MyISAM';
 
 mysqli_query($db, $query) or die(mysqli_error($db));
 
-echo 'Board database successfully created!';
+echo 'Chat database successfully created!';
 ?>

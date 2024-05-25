@@ -24,7 +24,6 @@ header {
   background-color: #4b5965;
   color: white;
 }
-
 .loginlink {
   color: white; /* 링크 색상을 흰색으로 설정 */
   text-decoration: none; /* 링크 밑줄 제거 */
@@ -52,7 +51,6 @@ nav a:hover {
   background-color: #4b5965;
   color: white;
 }
-
 .login-wrap {
   margin-top: 2%;
   border: solid 1px #eee;
@@ -66,21 +64,24 @@ nav a:hover {
   padding: 1.875rem;
   z-index: 1;
 }
-
 form {
   margin-bottom: 1rem;
 }
-
 p {
   margin-bottom: 1rem;
 }
-
 .content-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 1%;
   align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-head {
@@ -92,13 +93,11 @@ p {
   margin-bottom: 2rem;
   color: white;
 }
-
 input {
   width: 15.5rem;
   height: 1.8rem;
   border: solid 1px #eee;
 }
-
 .login-img {
   height: 2.125rem;
   width: 2.125em;
@@ -108,7 +107,6 @@ input {
   text-align: center;
   color: white;
 }
-
 .header-img {
   width: 5rem;
   height: 5rem;
@@ -118,7 +116,6 @@ input {
   display: flex;
   flex-direction: column;
 }
-
 .input-wrap2 {
   display: flex;
   flex-direction: row;
@@ -135,7 +132,8 @@ input {
   height: 5rem;
   z-index: 5;
   position: relative;
-  bottom: -50%;
+  bottom: 0;
+  align-items: center;
 }
 
 footer {
@@ -147,58 +145,18 @@ footer {
   font-size: 0.75rem;
   text-align: center;
 }
-
 .menu > a {
   color: white; /* 링크 색상을 흰색으로 설정 */
   text-decoration: none; /* 링크 밑줄 제거 */
   font-size: 0.8rem;
 }
-
 .menu {
   display: flex;
   flex-direction: row;
 }
-
-.toDoList:nth-child(even) {
-  padding: 1%;
-  display: flex;
-  flex-direction: row;
-  gap: 3%;
-  width: 100%;
-  height: 7%;
-  background-color: #f9f9f9;
-}
-
-.toDoList {
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  width: 100%;
-  max-width: 800px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.toDoList:hover {
-  background-color: #e9e9e9;
-}
-
-.toDoList > div {
-  flex: 1;
-  text-align: center;
-  padding: 0.5rem 0;
-  font-size: 1rem;
-}
-
 .comment-form {
   display: none;
 }
-
 .comment-button {
   background-color: #4b5965;
   color: #fff;
@@ -220,20 +178,17 @@ form {
   flex-direction: column;
   align-items: center;
 }
-
 textarea {
   width: 23rem;
   height: 10rem;
   margin-bottom: 3%;
 }
-
 .addBtn {
   width: 3rem;
   height: 2rem;
   background-color: #4b5965;
   color: white;
 }
-
 .toDOTitle {
   color: white;
   display: flex;
@@ -251,7 +206,6 @@ textarea {
   border: 1px solid #ddd;
   color: black;
 }
-
 .chat-title {
   margin-top: 3%;
   background-color: #4b5965;
@@ -264,30 +218,47 @@ textarea {
   font-size: 1.3rem;
   padding: 1.875rem;
 }
-
-.like-wrap {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.like-wrap input[type="submit"] {
-  background-color: #4b5965;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.like-wrap input[type="submit"]:hover {
-  background-color: #3a4852;
-}
-
 .likebutton {
   position: relative;
   bottom: 0;
   width: 1rem;
   height: 1rem;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.card h1 {
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+.card p {
+  margin: 0 0 10px;
+  color: #666;
+  text-align: center;
+}
+.card .date {
+  font-size: 0.9em;
+  color: #999;
+}
+.card-content {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  height: 10rem;
+  width: 100%;
+  border: 1px solid gray;
+  text-align: center;
+  border-radius: 10px;
+  padding: 2%;
 }

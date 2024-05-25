@@ -7,32 +7,41 @@ $db = mysqli_connect('localhost', 'root', '', 'userdata') or die ('Unable to con
 // 추가 버튼이 클릭되었을 때
 if(isset($_POST['submit'])){
     $id = $_SESSION['Login_id'];
-    $category = "To-do";
+    $category = "Study-summary";
     $thumb = 0;
     $view = 0;
     $chat =0;
     $time = date("Y-m-d H:i:s");
-    $check_query = "SELECT SID FROM userboardtable WHERE Login_board_id = '$id' AND Board_category = '$category'";
+    //가장 최신 유저가져와서 1늘린다음 저장
+    $check_query = "SELECT User_id FROM userboardtable WHERE Login_board_id = '$id' AND Board_category = '$category' ORDER BY SID DESC LIMIT 1";
     $result = mysqli_query($db, $check_query);
-
-    if(mysqli_num_rows($result) > 0){
-        // 이미 해당 아이디와 카테고리로 등록된 레코드가 존재함
-        // 처리할 내용을 여기에 추가하거나 에러 메시지를 표시할 수 있음
-    } else {
-        // 중복되는 아이디와 카테고리가 없으므로 새로운 레코드 삽입
-        $query = "INSERT INTO userboardtable (Login_board_id, Board_category, Create_board_date, Board_chat, Board_thumb, Board_view) VALUES ('$id','$category', '$time', '$chat', '$thumb', '$view')";
-        mysqli_query($db, $query) or die(mysqli_error($db));
-        header("Location:UserWriteTodoList.php");
-        exit;
-    }
+    $row = mysqli_fetch_assoc($result);
+    $user_id = $row['User_id'] ?? 0;
+    $user_id++; // Increment the User_id
     
-    $task = $_POST['toDo'];
-    $category = $_POST['Category'];
-    $id = $_SESSION['Login_id'];
-    $time = date("Y-m-d H:i:s");
-    $query = "INSERT INTO todotable (Login_todo_id, User_category, User_task, Create_date) VALUES ('$id','$category', '$task', '$time')";
+    // $check_query = "SELECT SID FROM userboardtable WHERE Login_board_id = '$id' AND Board_category = '$category'";
+    // $result = mysqli_query($db, $check_query);
+
+    $query = "INSERT INTO userboardtable (Login_board_id, User_id, Board_category, Create_board_date, Board_chat, Board_thumb, Board_view) VALUES ('$id','$user_id', '$category', '$time', '$chat', '$thumb', '$view')";
     mysqli_query($db, $query) or die(mysqli_error($db));
-    header("Location:UserWriteTodoList.php");
+   
+    $id = $_SESSION['Login_id'];
+    $category = $_POST['user_category'];
+    $content =  $_POST['user_content'];
+    $summary =  $_POST['user_summary'];
+    $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+    $time = date("Y-m-d H:i:s");
+    
+
+    $check_query = "SELECT Study_id FROM tostudytable WHERE Login_study_id = '$id' ORDER BY SID DESC LIMIT 1";
+    $result = mysqli_query($db, $check_query);
+    $row = mysqli_fetch_assoc($result);
+    $user_id = $row['Study_id'] ?? 0;
+    $user_id++; // Increment the User_id
+    
+    $query = "INSERT INTO tostudytable (Login_study_id, Study_id, User_category, User_content, User_summary, Image, Create_date) VALUES ('$id','$user_id','$category', '$content','$summary', '$image','$time')";
+    mysqli_query($db, $query) or die(mysqli_error($db));
+    header("Location:../board/TodoBoardPage.php");
     exit;
 }
 
@@ -46,7 +55,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-write-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="UserWriteTodoList.css?after" />
+    <link rel="stylesheet" href="UserWriteTostudyList.css" />
 </head>
 
 <body>
@@ -99,30 +108,29 @@ if(isset($_POST['submit'])){
 
         <div class="login-wrap">
             <div class="login-head">
-                Todo-List
+                StudySummaries
             </div>
-            <form method="post" action="">
-                <div class="input-wrap">
-                    <input type="text" name="Category" placeholder="카테고리">
-                    <input type="text" name="toDo" placeholder="할 일 추가하기">
-                    <button type="submit" class="addButton" name="submit">추가</button>
+            <form method="post" enctype="multipart/form-data" action="">
+
+                <div class="form-group">
+                    <label for="userCategory">User Category</label>
+                    <input type="text" class="form-control" id="userCategory" name="user_category" required>
                 </div>
+                <div class="form-group">
+                    <label for="userContent">User Content</label>
+                    <textarea class="field-control" id="userContent" name="user_content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="userSummary">User Summary</label>
+                    <textarea class="field-control" id="userSummary" name="user_summary" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control-file" id="image" name="image" required>
+                </div>
+                <button type="submit" class="btn btn-custom btn-block" name="submit">추가</button>
             </form>
-            <?php
-            // 데이터베이스에서 해당 사용자의 투두리스트 불러오기
-            $query = "SELECT * FROM todotable WHERE Login_todo_id='{$_SESSION['Login_id']}'";
-            $result = mysqli_query($db, $query);
-            // 투두리스트 항목 출력
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='toDoList'>";
-                echo "<input type='checkbox' name='completed[]'>";
-                echo "<span>{$row['User_task']}</span>";
-                echo "<div class='delete'>";
-                echo "<a href='../../utils/DeleteTask.php?num={$row['User_task']}'>삭제</a>";
-                echo "</div>";
-                echo "</div>";
-            }
-            ?>
+
             <img class="content-img" src="../../img/sejongwhite.png" alt="LogoImg">
         </div>
     </div>

@@ -2,15 +2,22 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+
 header {
+  background-color: #4b5965;
+  color: white;
+  padding: 10px 20px;
 }
+
 #header-img {
   width: 5rem;
   height: 5rem;
 }
+
 p {
   margin-bottom: 1rem;
 }
+
 .header-wrap {
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -21,6 +28,7 @@ p {
   background-color: #4b5965;
   color: white;
 }
+
 .loginlink {
   color: white; /* 링크 색상을 흰색으로 설정 */
   text-decoration: none; /* 링크 밑줄 제거 */
@@ -35,34 +43,72 @@ nav {
   width: 30rem;
   justify-content: center;
 }
-footer {
-  width: 100%;
-  height: 15%;
-  position: absolute;
-  bottom: 0;
+
+nav a {
+  text-decoration: none;
+  color: #4b5965;
+  background-color: #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+nav a:hover {
   background-color: #4b5965;
   color: white;
-  padding: 0.7%;
-  font-size: 0.5rem;
 }
+
+footer {
+  width: 100%;
+  height: 30rem;
+  background-color: #4b5965;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 .content-wrap {
   width: 100%;
-  height: 64vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 1%;
-  align-items: center;
+  margin-bottom: 5%;
 }
+
+#main-logo-img {
+  width: 30rem;
+  height: 30rem;
+  margin: 20px 0;
+}
+
 .main-logo {
-  width: 14rem; /* 로고의 너비 (200px) */
-  height: 6.25rem; /* 로고의 높이 (100px) */
-  background-color: #cd1039; /* 배경색 */
-  color: #fff; /* 텍스트 색상 */
-  font-size: 1.5rem; /* 텍스트 크기 (24px) */
-  font-weight: bold; /* 텍스트 굵기 */
+  width: 100%;
+  max-width: 300px;
+  height: 100px;
+  background-color: #cd1039;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.625rem; /* 로고의 모서리를 둥글게 만듭니다 (10px) */
-  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .header-wrap {
+    padding: 20px 40px;
+  }
+
+  .main-logo {
+    font-size: 2rem;
+    padding: 20px;
+  }
+
+  footer {
+    font-size: 1rem;
+  }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="UserAddPage.css" />
+    <link rel="stylesheet" href="UserAddPage.css?after" />
 
 </head>
 
@@ -43,14 +43,14 @@
                 <div class="input-wrap2">
                     <div class="pass-wrap">
                         비밀번호
-                        <input class="pass" type="password" name="Login_pw" required />
+                        <input id="Login_pw" type="password" name="Login_pw" required />
                     </div>
                     <div class="pass-wrap">
                         비밀번호 (확인)
-                        <input class="pass" type="password" name="Login_pw_confirm" required />
+                        <input id="Login_pw_confirm" type="password" name="Login_pw_confirm" required />
                     </div>
                 </div>
-                <div class="input-wrap">
+                <div class=" input-wrap">
                     학교
                     <input type="text" name="User_university" required />
                 </div>
@@ -58,7 +58,7 @@
                     이메일
                     <input type="text" name="Login_email" required />
                 </div>
-                <input id="submit" type="submit" name="submit" value="회원가입">
+                <input id="submit" type="submit" name="submit" value="회원가입" onclick="CheckPassword()">
 
             </form>
             <img src="../../img/sejongwhite.png" alt="LogoImg">
@@ -100,6 +100,7 @@ if(isset($_POST['submit'])) {
     exit; // 중요: 페이지 이동 후 스크립트를 중지해야 합니다.
 }
 ?>
+    <script type="text/javascript" src="CheckPassword.js"></script>
 </body>
 
 

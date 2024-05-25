@@ -8,20 +8,19 @@ mysqli_query($db, $query) or die(mysqli_error($db));
 
 mysqli_select_db($db, 'userdata') or die(mysqli_error($db));
 
-$query = 'CREATE TABLE userboardtable (
+$query = 'CREATE TABLE tostudytable (
     SID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    Login_board_id VARCHAR(255) NOT NULL, 
-    User_id INTEGER UNSIGNED NOT NULL, 
-    Board_category VARCHAR(255) NOT NULL, 
-    Create_board_date DATETIME NOT NULL,
-    Board_chat INTEGER UNSIGNED DEFAULT 0,
-    Board_thumb INTEGER UNSIGNED DEFAULT 0,
-    Board_view INTEGER UNSIGNED DEFAULT 0,
+    Login_study_id VARCHAR(255) NOT NULL,
+    Study_id INTEGER UNSIGNED NOT NULL, 
+    User_category VARCHAR(255) NOT NULL,
+    User_content VARCHAR(255) NOT NULL, 
+    User_summary VARCHAR(255) NOT NULL, 
+    Create_date DATETIME NOT NULL DEFAULT NOW(),
+    Image LONGBLOB NOT NULL,
     PRIMARY KEY (SID)
 ) 
 ENGINE=MyISAM';
 
 mysqli_query($db, $query) or die(mysqli_error($db));
-
-echo 'Board database successfully created!';
+echo 'Tostudy database successfully created!';
 ?>

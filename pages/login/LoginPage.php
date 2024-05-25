@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-login-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="LoginPage.css" />
-
+    <link rel="stylesheet" href="LoginPage.css?after" />
+    <script type="text/javascript" src="VisiblePassword.js"></script>
 </head>
 
 <body>
@@ -41,13 +41,13 @@
                 <p>
                 <div class="input-wrap">
                     <div class="login-img">🔓︎</div>
-                    <input type="password" name="Login_pw" required />
+                    <input id="pass" type="password" name="Login_pw" required />
                 </div>
                 <p>
                 <p>
                 <div class="input-wrap2">
                     <div>
-                        <input type="checkbox" id="visible" name="visible">
+                        <input type="checkbox" id="visible" name="visible" onchange="VisiblePassword(event)">
                         비밀번호 표시
                     </div>
                     <input id="submit" type="submit" value="로그인">
@@ -59,7 +59,9 @@
                 </div>
             </form>
         </div>
+
     </div>
+
     <footer>
         <p>사업자 등록 번호: 1004</p>
         <p>
@@ -75,7 +77,6 @@
             이메일: sins051301@naver.com
         </p>
     </footer>
-
 
 </body>
 
