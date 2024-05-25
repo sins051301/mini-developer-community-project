@@ -168,8 +168,7 @@ form {
   color: white;
 }
 .form-group input[type="text"],
-.form-group input[type="file"],
-.form-group input[type="textfield"] {
+.form-group input[type="file"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -179,8 +178,15 @@ form {
 .form-group input[type="file"] {
   padding: 3px;
 }
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 .btn-custom {
-  background-color: #007bff;
+  background-color: #4b5965;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -190,7 +196,7 @@ form {
   box-sizing: border-box;
 }
 .btn-custom:hover {
-  background-color: #0056b3;
+  background-color: black;
 }
 .form-control {
   height: 60%;

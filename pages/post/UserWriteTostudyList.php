@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-write-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="UserWriteTostudyList.css?after" />
+    <link rel="stylesheet" href="UserWriteTostudyList.css" />
 </head>
 
 <body>
@@ -118,17 +118,17 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="form-group">
                     <label for="userContent">User Content</label>
-                    <input type="textfield" class="field-control" id="userContent" name="user_content" required>
+                    <textarea class="field-control" id="userContent" name="user_content" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="userSummary">User Summary</label>
-                    <input type="textfield" class="field-control" id="userSummary" name="user_summary" required>
+                    <textarea class="field-control" id="userSummary" name="user_summary" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" class="form-control-file" id="image" name="image" required>
                 </div>
-                <button type="submit" class="btn btn-custom btn-block" name="submit">Submit</button>
+                <button type="submit" class="btn btn-custom btn-block" name="submit">추가</button>
             </form>
 
             <img class="content-img" src="../../img/sejongwhite.png" alt="LogoImg">

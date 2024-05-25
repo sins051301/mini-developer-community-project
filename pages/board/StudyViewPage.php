@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Developer-community-view-page</title>
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="StudyViewPage.css?after" />
+    <link rel="stylesheet" href="StudyViewPage.css" />
     <script type="text/javascript" src="ToggleForm.js"></script>
 </head>
 
@@ -101,9 +101,12 @@ if (isset($_POST['submit'])) {
                  while ($row = mysqli_fetch_assoc($result)): ?>
                 <div class="card">
                     <img src="data:image/jpeg;base64,<?php echo base64_encode($row['Image']); ?>" alt="User Image">
-                    <h3><?php echo htmlspecialchars($row['User_category']); ?></h3>
-                    <p><?php echo htmlspecialchars($row['User_content']); ?></p>
-                    <p><?php echo htmlspecialchars($row['User_summary']); ?></p>
+                    <h1>-<?php echo htmlspecialchars($row['User_category']); ?>-</h1>
+                    <p></p>
+                    <h1>내용</h1>
+                    <div class="card-content"><?php echo htmlspecialchars($row['User_content']); ?></div>
+                    <h1>요약</h1>
+                    <div class="card-content"><?php echo htmlspecialchars($row['User_summary']); ?></div>
                     <p class="date"><?php echo htmlspecialchars($row['Create_date']); ?></p>
                 </div>
                 <?php endwhile; ?>

@@ -32,6 +32,7 @@ nav {
   margin-bottom: 2%;
   width: 30rem;
   justify-content: center;
+  font-weight: bold;
 }
 
 nav a {

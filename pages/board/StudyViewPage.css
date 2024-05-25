@@ -239,9 +239,9 @@ textarea {
   border-radius: 8px;
   margin-bottom: 15px;
 }
-.card h3 {
+.card h1 {
   margin: 0 0 10px;
-  color: #333;
+  font-weight: bold;
 }
 .card p {
   margin: 0 0 10px;
@@ -251,4 +251,14 @@ textarea {
 .card .date {
   font-size: 0.9em;
   color: #999;
+}
+.card-content {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  height: 10rem;
+  width: 100%;
+  border: 1px solid gray;
+  text-align: center;
+  border-radius: 10px;
+  padding: 2%;
 }
